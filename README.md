@@ -2,7 +2,7 @@
 
 ![Python](https://img.shields.io/badge/python-v3.12+-blue.svg)
 ![Google ADK](https://img.shields.io/badge/Built%20with-Google%20ADK-green)
-![License](https://img.shields.io/badge/license-MIT-yellow.svg)
+![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
 
 > **⚠️ DISCLAIMER: THIS IS NOT AN OFFICIALLY SUPPORTED GOOGLE PRODUCT. THIS PROJECT IS INTENDED FOR DEMONSTRATION PURPOSES ONLY. IT IS NOT INTENDED FOR USE IN A PRODUCTION ENVIRONMENT.**
 
