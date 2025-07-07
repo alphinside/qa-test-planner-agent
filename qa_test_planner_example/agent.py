@@ -1,5 +1,9 @@
 from google.adk.agents import Agent
-from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset, StdioServerParameters
+from google.adk.tools.mcp_tool.mcp_toolset import (
+    MCPToolset,
+    StdioConnectionParams,
+    StdioServerParameters,
+)
 from google.adk.planners import BuiltInPlanner
 from google.genai import types
 from dotenv import load_dotenv
@@ -15,17 +19,20 @@ from google.adk.tools import ToolContext
 load_dotenv(dotenv_path=Path(__file__).parent / ".env")
 
 confluence_tool = MCPToolset(
-    connection_params=StdioServerParameters(
-        command="uvx",
-        args=[
-            "mcp-atlassian",
-            f"--confluence-url={os.getenv('CONFLUENCE_URL')}",
-            f"--confluence-username={os.getenv('CONFLUENCE_USERNAME')}",
-            f"--confluence-token={os.getenv('CONFLUENCE_TOKEN')}",
-            "--enabled-tools=confluence_search,confluence_get_page,confluence_get_page_children",
-        ],
-        env={},
-    )
+    connection_params=StdioConnectionParams(
+        server_params=StdioServerParameters(
+            command="uvx",
+            args=[
+                "mcp-atlassian",
+                f"--confluence-url={os.getenv('CONFLUENCE_URL')}",
+                f"--confluence-username={os.getenv('CONFLUENCE_USERNAME')}",
+                f"--confluence-token={os.getenv('CONFLUENCE_TOKEN')}",
+                "--enabled-tools=confluence_search,confluence_get_page,confluence_get_page_children",
+            ],
+            env={},
+        ),
+        timeout=15,
+    ),
 )
 
 

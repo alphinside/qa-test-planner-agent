@@ -48,12 +48,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Configuration
 
-The agent requires credentials to access Confluence. These are managed via a `.env` file inside the `qa-test-planner` directory.
+The agent requires credentials to access Confluence. These are managed via a `.env` file inside the `qa_test_planner` directory.
 
-1. **Create a `.env` file:**
-   ```bash
-   touch qa-test-planner/.env
-   ```
+1. Rename qa_test_planner_example to qa_test_planner directory and copy the .env.example file to .env
 
 2. **Add the following environment variables** to the `.env` file with your Confluence details:
 
@@ -91,3 +88,20 @@ This will initialize the agent and launch a web interface where you can:
 3. Review the PRD with AI-generated insights
 4. Request a test plan generation
 5. Export the test plan as CSV
+
+## Deployment to Cloud Run
+
+gcloud run deploy qa-test-planner-agent \
+                  --source . \
+                  --port 8080 \
+                  --project {YOUR_PROJECT_ID} \
+                  --allow-unauthenticated \
+                  --region us-central1 \
+                  --update-env-vars GOOGLE_GENAI_USE_VERTEXAI=1 \
+                  --update-env-vars GOOGLE_CLOUD_PROJECT={YOUR_PROJECT_ID} \
+                  --update-env-vars GOOGLE_CLOUD_LOCATION=global \
+                  --update-env-vars CONFLUENCE_URL={YOUR_CONFLUENCE_URL} \
+                  --update-env-vars CONFLUENCE_USERNAME={YOUR_CONFLUENCE_USERNAME} \
+                  --update-env-vars CONFLUENCE_TOKEN={YOUR_CONFLUENCE_TOKEN} \
+                  --update-env-vars CONFLUENCE_PRD_SPACE_ID={YOUR_PRD_SPACE_ID} \
+                  --memory 1G
