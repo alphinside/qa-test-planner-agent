@@ -113,15 +113,16 @@ async def write_test_tool(
                 filename=f"{prd_id}_test_plan.csv",
                 artifact=types.Part.from_bytes(data=file_bytes, mime_type="text/csv"),
             )
-            artifact = await tool_context.load_artifact(f"{prd_id}_test_plan.csv")
 
             # Clean up the temporary file
             os.unlink(temp_file_path)
 
             return {
                 "status": "success",
-                "message": f"Successfully wrote {len(validated_test_cases)} test cases to CSV file",
-                "artifact": artifact,
+                "message": (
+                    f"Successfully wrote {len(validated_test_cases)} test cases to "
+                    f"CSV file: {prd_id}_test_plan.csv"
+                ),
             }
         else:
             return {"status": "warning", "message": "No test cases to write"}
