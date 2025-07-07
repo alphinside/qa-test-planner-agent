@@ -31,7 +31,7 @@ confluence_tool = MCPToolset(
             ],
             env={},
         ),
-        timeout=15,
+        timeout=60,
     ),
 )
 
