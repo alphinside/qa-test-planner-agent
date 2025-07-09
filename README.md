@@ -21,7 +21,6 @@ The QA Test Planner Agent is an intelligent assistant built with the Google Agen
 - **🔍 Search Confluence**: Easily search for and retrieve Product Requirement Documents (PRDs) and other relevant documents within your Confluence space
 - **📊 Document Evaluation**: Get AI expert analysis of PRDs with suggestions for areas needing clarification or improvement
 - **📝 Test Plan Generation**: Create detailed test plans in a Jira Xray compatible format (Markdown table) ready for implementation
-- **🔄 Workflow Integration**: Seamlessly fits into existing development workflows using Atlassian products
 
 ## Getting Started
 
